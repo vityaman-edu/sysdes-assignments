@@ -1,0 +1,34 @@
+@startuml Storage Net, Use Case, Withdrawal
+
+left to right direction
+
+actor "Manager" as manager
+actor "Administrator" as admin
+actor "Customer" as customer
+
+usecase "Arrange a withdrawal" as arrange
+
+package System {
+  usecase "Request withdrawal from storage A" as request_withdrawal
+
+  usecase "Approve the withdrawal request" as approve
+  usecase "Reject the withdrawal request" as reject
+
+  usecase "Notify" as notify
+}
+
+customer -right-> arrange
+arrange -up-> manager
+
+manager --> request_withdrawal
+request_withdrawal --> admin
+
+admin --> approve
+admin --> reject
+
+approve --> notify
+reject --> notify
+
+notify --> customer
+
+@enduml

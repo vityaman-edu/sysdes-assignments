@@ -1,0 +1,19 @@
+@startuml Storage Net, Use Case, View Content
+
+left to right direction
+
+actor "Manager" as manager
+
+package System {
+  usecase "View item list" as view
+  usecase "In a given storage" as storage
+  usecase "In a whole network" as network
+  usecase "In a given order" as order
+}
+
+manager --> view
+view --> storage
+view --> network
+view --> order
+
+@enduml
